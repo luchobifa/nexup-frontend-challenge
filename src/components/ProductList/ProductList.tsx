@@ -8,6 +8,10 @@ interface ProductListProps {
 }
 
 export const ProductList: React.FC<ProductListProps> = ({ products }) => {
+  if (products.length === 0) {
+    return <div className="no-products">No products found</div>;
+  }
+
   return (
     <div className="product-list">
       {products.map((product) => (

@@ -1,38 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { ProductList } from '../ProductList/ProductList';
 import { CategoryFilter } from '../CategoryFilter/CategoryFilter';
+import { SearchInput } from '../SearchInput/SearchInput';
 import { categories } from '../../models/mockData';
-import { getProductList } from '../../api/products';
-import { Product } from '../../models/types';
+import { useProducts } from '../../hooks/useProducts';
 import './ProductManager.css';
 
 export const ProductManager: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState('Todos');
-  const [products, setProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        setIsLoading(true);
-        const data = await getProductList();
-        setProducts(data);
-      } catch (err) {
-        setError('Failed to fetch products. Please try again later.');
-        console.error('Error fetching products:', err);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchProducts();
-  }, []);
-
-  const filteredProducts =
-    selectedCategory === 'Todos'
-      ? products
-      : products.filter((product) => product.category === selectedCategory);
+  const {
+    isLoading,
+    error,
+    filteredProducts,
+    filters: { category, setCategory, setSearch },
+  } = useProducts();
 
   if (error) {
     return <div className="error-message">{error}</div>;
@@ -40,11 +20,14 @@ export const ProductManager: React.FC = () => {
 
   return (
     <div className="product-manager">
-      <CategoryFilter
-        categories={categories}
-        selectedCategory={selectedCategory}
-        onCategoryChange={setSelectedCategory}
-      />
+      <div className="filters-container">
+        <SearchInput onSearch={setSearch} />
+        <CategoryFilter
+          categories={categories}
+          selectedCategory={category}
+          onCategoryChange={setCategory}
+        />
+      </div>
       {isLoading ? (
         <div className="loading">Loading products...</div>
       ) : (

@@ -1,10 +1,11 @@
 .product-card {
+  display: flex;
   background: white;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: flex;
-  overflow: hidden;
-  transition: transform 0.2s ease-in-out;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  position: relative;
 }
 
 .product-card:hover {
@@ -12,34 +13,46 @@
 }
 
 .status-indicator {
-  width: 8px;
-  min-height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  border-radius: 4px 0 0 4px;
 }
 
 .product-info {
-  padding: 16px;
   flex: 1;
+  margin-left: 1rem;
 }
 
 .product-name {
-  margin: 0 0 8px 0;
-  font-size: 18px;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+  color: #333;
 }
 
 .product-category {
-  margin: 0 0 8px 0;
-  opacity: 0.5;
-  font-size: 14px;
+  margin: 0 0 0.5rem 0;
+  color: #666;
+  font-size: 0.9rem;
 }
 
 .product-price {
-  margin: 0 0 8px 0;
-  font-size: 16px;
-  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  font-weight: bold;
+  color: #2c3e50;
 }
 
 .product-stock {
   margin: 0;
-  font-size: 14px;
-  opacity: 0.7;
+  font-size: 0.9rem;
+}
+
+.product-stock.in-stock {
+  color: #28a745;
+}
+
+.product-stock.out-of-stock {
+  color: #dc3545;
 }

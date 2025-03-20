@@ -5,13 +5,20 @@ import { SearchInput } from '../SearchInput/SearchInput';
 import { categories } from '../../models/mockData';
 import { useProducts } from '../../hooks/useProducts';
 import './ProductManager.css';
+import { StockFilter } from '../StockFilter/StockFilter';
 
 export const ProductManager: React.FC = () => {
   const {
     isLoading,
     error,
     filteredProducts,
-    filters: { category, setCategory, setSearch },
+    filters: {
+      category,
+      setCategory,
+      setSearch,
+      showOnlyInStock,
+      setShowOnlyInStock,
+    },
   } = useProducts();
 
   if (error) {
@@ -26,6 +33,10 @@ export const ProductManager: React.FC = () => {
           categories={categories}
           selectedCategory={category}
           onCategoryChange={setCategory}
+        />
+        <StockFilter
+          showOnlyInStock={showOnlyInStock}
+          onToggle={setShowOnlyInStock}
         />
       </div>
       {isLoading ? (

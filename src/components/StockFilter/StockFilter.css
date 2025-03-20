@@ -1,0 +1,19 @@
+.stock-filter {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.stock-filter-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.stock-filter-checkbox {
+  width: 1.2rem;
+  height: 1.2rem;
+  cursor: pointer;
+}

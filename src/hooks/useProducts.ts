@@ -12,6 +12,8 @@ interface UseProductsReturn {
     category: string;
     setCategory: (category: string) => void;
     setSearch: (query: string) => void;
+    showOnlyInStock: boolean;
+    setShowOnlyInStock: (show: boolean) => void;
   };
 }
 
@@ -21,6 +23,7 @@ export const useProducts = (): UseProductsReturn => {
   const [error, setError] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState('Todos');
   const [searchQuery, setSearchQuery] = useState('');
+  const [showOnlyInStock, setShowOnlyInStock] = useState(false);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -44,7 +47,11 @@ export const useProducts = (): UseProductsReturn => {
       ? products
       : products.filter((product) => product.category === selectedCategory);
 
-  const filteredProducts = searchProducts(filteredByCategory, searchQuery);
+  const filteredByStock = showOnlyInStock
+    ? filteredByCategory.filter((product) => product.stock > 0)
+    : filteredByCategory;
+
+  const filteredProducts = searchProducts(filteredByStock, searchQuery);
 
   return {
     products,
@@ -55,6 +62,8 @@ export const useProducts = (): UseProductsReturn => {
       category: selectedCategory,
       setCategory: setSelectedCategory,
       setSearch: setSearchQuery,
+      showOnlyInStock,
+      setShowOnlyInStock,
     },
   };
 };

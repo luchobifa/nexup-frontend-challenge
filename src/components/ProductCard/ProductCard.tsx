@@ -3,6 +3,7 @@ import './ProductCard.css';
 import { Product } from '../../models/Product';
 import { ProductStatus } from '../../models/ProductStatus';
 import Price from '../Price/Price';
+import { StockDetail } from '../StockDetail/StockDetail';
 
 type ProductCardProps = {
   product: Product;
@@ -30,11 +31,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <h3 className="product-name">{product.name}</h3>
         <p className="product-category">{product.category}</p>
         <Price price={product.price} />
-        <p
-          className={`product-stock ${product.stock > 0 ? 'in-stock' : 'out-of-stock'}`}
-        >
-          {product.stock ? `In Stock (${product.stock})` : 'Out of Stock'}
-        </p>
+        <StockDetail stock={product.stock} />
       </div>
     </div>
   );

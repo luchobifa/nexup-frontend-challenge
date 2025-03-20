@@ -5,8 +5,8 @@ type Props = {
   price: number;
 };
 
-const Price: React.FC<Props> = ({ price }: Props) => {
-  return <p className="product-price">{formatPrice(price)}</p>;
-};
+const Price: React.FC<Props> = ({ price }: Props) => (
+  <p className="product-price">{formatPrice(price)}</p>
+);
 
 export default Price;

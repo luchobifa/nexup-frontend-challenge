@@ -3,7 +3,7 @@ import { Product } from '../models/Product';
 import { searchProducts } from '../utils/search';
 import { getProductList } from '../api/products';
 
-interface UseProductsReturn {
+type UseProductsReturn = {
   products: Product[];
   filteredProducts: Product[];
   isLoading: boolean;
@@ -15,7 +15,7 @@ interface UseProductsReturn {
     showOnlyInStock: boolean;
     setShowOnlyInStock: (show: boolean) => void;
   };
-}
+};
 
 export const useProducts = (): UseProductsReturn => {
   const [products, setProducts] = useState<Product[]>([]);

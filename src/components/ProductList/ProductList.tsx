@@ -3,9 +3,9 @@ import { Product } from '../../models/Product';
 import './ProductList.css';
 import ProductCard from '../ProductCard/ProductCard';
 
-interface ProductListProps {
+type ProductListProps = {
   products: Product[];
-}
+};
 
 export const ProductList: React.FC<ProductListProps> = ({ products }) => {
   if (products.length === 0) {

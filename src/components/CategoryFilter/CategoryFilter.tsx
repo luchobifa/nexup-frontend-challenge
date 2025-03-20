@@ -1,11 +1,11 @@
 import React from 'react';
 import './CategoryFilter.css';
 
-interface CategoryFilterProps {
+type CategoryFilterProps = {
   categories: string[];
   selectedCategory: string;
   onCategoryChange: (category: string) => void;
-}
+};
 
 export const CategoryFilter: React.FC<CategoryFilterProps> = ({
   categories,

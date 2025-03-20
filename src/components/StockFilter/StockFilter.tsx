@@ -1,10 +1,10 @@
 import React from 'react';
 import './StockFilter.css';
 
-interface StockFilterProps {
+type StockFilterProps = {
   showOnlyInStock: boolean;
   onToggle: (show: boolean) => void;
-}
+};
 
 export const StockFilter: React.FC<StockFilterProps> = ({
   showOnlyInStock,

@@ -1,4 +1,4 @@
-import { Product } from '../models/types';
+import { Product } from '../models/Product';
 
 export const searchProducts = (
   products: Product[],

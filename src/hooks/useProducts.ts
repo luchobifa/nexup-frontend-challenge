@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Product } from '../models/types';
-import { getProductList } from '../api/products';
+import { Product } from '../models/Product';
 import { searchProducts } from '../utils/search';
+import { getProductList } from '../api/products';
 
 interface UseProductsReturn {
   products: Product[];

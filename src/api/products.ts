@@ -1,5 +1,5 @@
-import { Product } from '../models/types';
 import { mockProducts } from '../models/mockData';
+import { Product } from '../models/Product';
 
 const delay = (ms: number) =>
   new Promise<void>((resolve) => {

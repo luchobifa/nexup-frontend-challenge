@@ -1,12 +1,16 @@
 import React from 'react';
+import { ProductManager } from './components/ProductManager/ProductManager';
 import './App.css';
-import { ProductManager } from './components/ProductManager';
 
 const App: React.FC = () => {
   return (
-    <div className="NexupFrontendChallenge">
-      <h1>Nexup Frontend Challenge</h1>
-      <ProductManager />
+    <div className="app">
+      <header className="app-header">
+        <h1>Product List</h1>
+      </header>
+      <main className="app-main">
+        <ProductManager />
+      </main>
     </div>
   );
 };
